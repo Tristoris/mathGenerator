@@ -15,25 +15,57 @@ public class EquationCreator
         int amount = linearAmount + quadraticAmount;
         equationList = new String[amount];
         for (int i = 0; i < equationList.length; i++) {
-            
+            equationList[i] = createLinear(1, 1, 3);
         }
     }
-    
+
     private String createLinear (int difficulty, double smallest, double biggest) {
         String eq = "";
-        
+        int[] data = new int[4];
+
         switch (difficulty) {
             case 1:
                 int answer = randomNumber((int)smallest, (int)biggest);
-                int a = randomNumber(-20, 20);
-                
-                
-                
+                int e = randomNumber(-20, 20);
+                int f = answer * e;
+                int a = randomNumber(0, 20);
+                int c = e - a;
+                int d = randomNumber(0, 20);
+                int b = f - d;
+                int[] temp = {a,b,c,d};
+                data = temp;
+
                 break;
             default:
                 break;
         }
-        
+
+        for (int i = 0; i < data.length; i++) {
+            switch (data[i]) {
+                case 0:
+                    break;
+                case 1:
+                    if (i == 0 || i == 2) eq += "x";
+                    else eq += "1";
+                    break;
+                case -1:
+                    if (i == 0 || i == 2) eq += "-x";
+                    else eq += "x";
+                default:
+                    if (data[i] > 0) eq += data[i] + "x";
+                    else eq += data[i] + "x";
+                    break;
+            }
+            
+            if (i == 0 || i == 2) {
+                if (data[i] != 0) {
+                    if (data[i] < 0) eq += " - ";
+                }
+            }
+            
+            if (i == 1) eq += " = ";
+        }
+
         return eq;
     }
 
@@ -43,6 +75,11 @@ public class EquationCreator
 
     public String toString () {
         String s = "";
+
+        for (int i = 0; i < equationList.length; i++) {
+            s += equationList[i] + "\n";
+        }
+        System.out.println(s);
 
         return s;
     }
