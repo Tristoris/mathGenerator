@@ -50,20 +50,24 @@ public class EquationCreator
                     break;
                 case -1:
                     if (i == 0 || i == 2) eq += "-x";
-                    else eq += "x";
+                    else eq += "-1";
                 default:
-                    if (data[i] > 0) eq += data[i] + "x";
-                    else eq += data[i] + "x";
+                    if (i == 0 || i == 2) {
+                        if (data[i] > 0) eq += data[i] + "x";
+                        else eq += data[i] + "x";
+                    } else {
+                        eq += data[i];
+                    }
                     break;
             }
-            
+
             if (i == 0 || i == 2) {
                 if (data[i] != 0) {
                     if (data[i] < 0) eq += " - ";
                     else eq += " + ";
                 }
             }
-            
+
             if (i == 1) eq += " = ";
         }
 
