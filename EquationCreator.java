@@ -60,6 +60,7 @@ public class EquationCreator
             if (i == 0 || i == 2) {
                 if (data[i] != 0) {
                     if (data[i] < 0) eq += " - ";
+                    else eq += " + ";
                 }
             }
             
