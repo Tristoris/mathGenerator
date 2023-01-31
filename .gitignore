@@ -1,4 +1,4 @@
 *.jar
 *.ctxt
 *.class
-bluej.package
+package.bluej
